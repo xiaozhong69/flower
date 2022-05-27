@@ -3,15 +3,14 @@ import styles from './User_RegisterForm.module.css';
 import { Form, Input, Button } from 'antd';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import into from '../../../db/into';
+// import into from '../../../db/into';
 
 export const RegisterForm = () => {
-
   const history = useHistory();
 
   const onFinish = async (values: any) => {
     try {
-      await into(values.username, values.password, values.phone);
+      // await into(values.username, values.password, values.phone);
       history.push('/user_signIn/');
     } catch (error) {
       alert('注册失败！');
@@ -52,18 +51,19 @@ export const RegisterForm = () => {
         name="confirm"
         dependencies={['password']}
         hasFeedback
-        rules={[{
-          required: true,
-          message: '请再次输入密码!',
-        },
-        (({ getFieldValue }) => ({
-          validator(_, value) {
-            if (!value || getFieldValue("password") === value) {
-              return Promise.resolve();
-            }
-            return Promise.reject("密码确认不一致");
-          }
-        }))
+        rules={[
+          {
+            required: true,
+            message: '请再次输入密码!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject('密码确认不一致');
+            },
+          }),
         ]}
       >
         <Input.Password />
@@ -71,11 +71,12 @@ export const RegisterForm = () => {
       <Form.Item
         label="手机号"
         name="phone"
-        rules={[{
-          required: true,
-          message: '请确保手机号输入正确!',
-          len: 11,
-        }
+        rules={[
+          {
+            required: true,
+            message: '请确保手机号输入正确!',
+            len: 11,
+          },
         ]}
       >
         <Input />

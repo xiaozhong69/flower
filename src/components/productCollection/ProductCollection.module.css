@@ -1,0 +1,24 @@
+.content {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.side-image {
+    width: 260px;
+    display: block;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.detail-text {
+    text-align: center;
+    width: 212px;
+    background-color: #fff;
+    height: 50px;
+}
+
+.content-second{
+    margin-top: 25px;
+
+}
